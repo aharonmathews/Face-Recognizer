@@ -5,7 +5,7 @@ Feeds data constantly to the model and their adaptability in real-time sets Haar
 
 Though it is purely made to recognize only faces and seem like a traditional Classifier of ED
 
-# Use Cases:
+### Use Cases:
 Real-time Face-Recognizer find applications in various fields, such as:
 
 *Security and Surveillance*: Haar classifiers can continuously update their dataset to improve their ability to detect and track objects of interest in surveillance cameras.
