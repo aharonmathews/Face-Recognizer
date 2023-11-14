@@ -27,9 +27,10 @@ print('Shape of Faces matrix --> ', FACES.shape)
 knn=KNeighborsClassifier(n_neighbors=5)
 knn.fit(FACES, LABELS)
 
-imgBackground=cv2.imread("dataset/backgroundimage.png")
+imgBackground=cv2.imread("dataset/backgroundimage.jpg")
 
 COL_NAMES = ['NAME', 'TIME']
+x1,x2,x3 = 0,255,0
 
 while True:
     ret,frame=video.read()
@@ -44,13 +45,13 @@ while True:
         timestamp=datetime.fromtimestamp(ts).strftime("%H:%M-%S")
         exist=os.path.isfile("Attendance/Attendance_" + date + ".csv")
         cv2.rectangle(frame, (x,y), (x+w, y+h), (0,0,255), 1)
-        cv2.rectangle(frame,(x,y),(x+w,y+h),(50,50,255),2)
-        cv2.rectangle(frame,(x,y-40),(x+w,y),(50,50,255),-1)
+        cv2.rectangle(frame,(x,y),(x+w,y+h),(x1,x2,x3),2)
+        cv2.rectangle(frame,(x,y-40),(x+w,y),(x1,x2,x3),-1)
         cv2.putText(frame, str(output[0]), (x,y-15), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1)
-        cv2.rectangle(frame, (x,y), (x+w, y+h), (50,50,255), 1)
+        cv2.rectangle(frame, (x,y), (x+w, y+h), (x1,x2,x3), 1)
         attendance=[str(output[0]), str(timestamp)]
-    imgBackground[162:162 + 480, 55:55 + 640] = frame
-    cv2.imshow("Frame",imgBackground)
+    #imgBackground[162:162 + 480, 55:55 + 640] = frame
+    cv2.imshow("Frame",frame)
     k=cv2.waitKey(1)
     if k==ord('o'):
         speak("Attendance Taken..")

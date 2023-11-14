@@ -10,7 +10,7 @@ try:
         data = pickle.load(file)
 
         # Print the loaded data
-        print("Data from the pickle file:")
+        print("Name : "+str(len(data)))
         print(data)
 
 except FileNotFoundError:
