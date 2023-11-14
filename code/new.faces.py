@@ -6,9 +6,7 @@ video=cv2.VideoCapture(0)
 facedetect=cv2.CascadeClassifier('code/haarcascade_frontalface_default.xml')
 
 faces_data=[]
-
 i=0
-
 name = "Aharon"
 
 while True:
