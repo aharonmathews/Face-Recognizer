@@ -30,7 +30,7 @@ knn.fit(FACES, LABELS)
 imgBackground=cv2.imread("dataset/backgroundimage.jpg")
 
 COL_NAMES = ['NAME', 'TIME']
-x1,x2,x3 = 0,255,0
+colb,colg,colr = 0,255,0
 
 while True:
     ret,frame=video.read()
@@ -39,16 +39,17 @@ while True:
     for (x,y,w,h) in faces:
         crop_img=frame[y:y+h, x:x+w, :]
         resized_img=cv2.resize(crop_img, (50,50)).flatten().reshape(1,-1)
+        print(resized_img.shape)
         output=knn.predict(resized_img)
         ts=time.time()
         date=datetime.fromtimestamp(ts).strftime("%d-%m-%Y")
         timestamp=datetime.fromtimestamp(ts).strftime("%H:%M-%S")
         exist=os.path.isfile("Attendance/Attendance_" + date + ".csv")
         cv2.rectangle(frame, (x,y), (x+w, y+h), (0,0,255), 1)
-        cv2.rectangle(frame,(x,y),(x+w,y+h),(x1,x2,x3),2)
-        cv2.rectangle(frame,(x,y-40),(x+w,y),(x1,x2,x3),-1)
+        cv2.rectangle(frame,(x,y),(x+w,y+h),(colb,colg,colr),2)
+        cv2.rectangle(frame,(x,y-40),(x+w,y),(colb,colg,colr),-1)
         cv2.putText(frame, str(output[0]), (x,y-15), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1)
-        cv2.rectangle(frame, (x,y), (x+w, y+h), (x1,x2,x3), 1)
+        cv2.rectangle(frame, (x,y), (x+w, y+h), (colb,colg,colr), 1)
         attendance=[str(output[0]), str(timestamp)]
     #imgBackground[162:162 + 480, 55:55 + 640] = frame
     cv2.imshow("Frame",frame)

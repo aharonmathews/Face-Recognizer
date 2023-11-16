@@ -1,7 +1,7 @@
 import pickle
 
 # Replace 'your_file.pkl' with the path to your pickle file
-file_path = 'dataset/names.pkl'
+file_path = 'dataset/faces_data.pkl'
 
 try:
     # Open the pickle file for reading
