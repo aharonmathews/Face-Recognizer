@@ -7,7 +7,7 @@ facedetect=cv2.CascadeClassifier('code/haarcascade_frontalface_default.xml')
 
 faces_data=[]
 i=0
-name = "Aharon"
+name = "Aswin"
 
 while True:
     ret,frame=video.read()
@@ -47,8 +47,11 @@ if 'faces_data.pkl' not in os.listdir('dataset/'):
     with open('dataset/faces_data.pkl', 'wb') as f:
         pickle.dump(faces_data, f)
 else:
-    with open('dataset/faces_data.pkl', 'rb') as f:
+    '''with open('dataset/faces_data.pkl', 'rb') as f:
         faces=pickle.load(f)
     faces=np.append(faces, faces_data, axis=0)
-    with open('dataset/faces_data.pkl', 'wb') as f:
+    print(faces)'''
+
+    with open('dataset/faces_data.pkl', 'ab') as f:
+        
         pickle.dump(faces, f)
