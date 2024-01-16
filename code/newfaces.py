@@ -7,7 +7,7 @@ facedetect=cv2.CascadeClassifier('code/haarcascade_frontalface_default.xml')
 
 faces_data=[]
 i=0
-name = "Aswin"
+name = "Aharon"
 
 while True:
     ret,frame=video.read()
